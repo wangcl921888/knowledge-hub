@@ -1,0 +1,48 @@
+{
+  // $schema: 让编辑器知道这是 tsconfig，输入时能自动提示、校验字段拼写
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    // target: 把 TS 编译成哪个版本的 JS。ES2022 是现代浏览器都支持的版本
+    "target": "ES2022",
+    // lib: 告诉 TS "运行环境里有哪些内置 API 可用"（比如 Promise、Array 方法）
+    "lib": ["ES2023"],
+    // module: 用哪种模块规范。ESNext = 最新的 import/export 写法
+    "module": "ESNext",
+    // moduleResolution: 怎么找模块。"Bundler" 是给 Vite/Next.js 这类打包器用的新方式
+    "moduleResolution": "Bundler",
+
+    // ===== 下面是"严格模式全家桶"，帮你提前发现 bug，面试加分点 =====
+    // strict: 一键打开所有严格检查（比如禁止隐式 any）
+    "strict": true,
+    // noUncheckedIndexedAccess: 用 arr[0] 取值时，TS 会提醒你"可能是 undefined"
+    "noUncheckedIndexedAccess": true,
+    // exactOptionalPropertyTypes: 区分 "属性不传" 和 "属性传 undefined"，更严谨
+    "exactOptionalPropertyTypes": true,
+    // noImplicitOverride: 子类重写父类方法时必须写 override 关键字，防止拼错
+    "noImplicitOverride": true,
+    // noFallthroughCasesInSwitch: switch 里忘记写 break 会报错，避免逻辑穿透
+    "noFallthroughCasesInSwitch": true,
+
+    // ===== 下面是模块互通与兼容相关 =====
+    // esModuleInterop: 让你能顺利 import 那些老的 CommonJS 模块
+    "esModuleInterop": true,
+    // skipLibCheck: 跳过对第三方库 .d.ts 的类型检查，加快编译速度
+    "skipLibCheck": true,
+    // forceConsistentCasingInFileNames: 强制文件名大小写一致（Windows 不区分大小写，容易埋坑）
+    "forceConsistentCasingInFileNames": true,
+    // resolveJsonModule: 允许直接 import xxx.json 文件
+    "resolveJsonModule": true,
+    // isolatedModules: 保证每个文件能单独编译（Babel/esbuild/SWC 的要求）
+    "isolatedModules": true,
+    // verbatimModuleSyntax: 强制区分 "类型导入" 和 "值导入"，配合打包器更安全
+    "verbatimModuleSyntax": true,
+
+    // ===== 下面三个是生成"声明文件和调试映射"，做共享库(packages)时必备 =====
+    // declaration: 生成 .d.ts 类型声明文件（这就是你清单里说的 d.ts！）
+    "declaration": true,
+    // declarationMap: 生成声明文件的 sourcemap，方便别人点进你的库看源码
+    "declarationMap": true,
+    // sourceMap: 生成 sourcemap，方便浏览器里调试 TS 原始代码
+    "sourceMap": true
+  }
+}

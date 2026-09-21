@@ -1,0 +1,5 @@
+# monorepo 的"户口本"：告诉 pnpm 哪些文件夹是子项目
+# 这样所有子项目的依赖能统一安装、还能互相引用
+packages:
+  - "apps/*"      # apps 下的每个文件夹都是一个"应用"（能跑起来的网站，如 web、admin）
+  - "packages/*"  # packages 下的每个文件夹都是一个"共享库"（被应用复用的代码，如 ui、db、ai）

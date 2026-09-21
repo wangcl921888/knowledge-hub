@@ -1,0 +1,32 @@
+# ===== 这个文件告诉 git：哪些文件不要提交到仓库 =====
+
+# 依赖：node_modules 体积巨大，且能靠 package.json 重新安装，所以不提交
+node_modules/
+.pnpm-store/
+
+# 构建产物：都是代码编译生成的，别人拉下来能自己重新生成，不用提交
+dist/
+build/
+.next/
+out/
+.turbo/
+
+# 环境变量与密钥（千万别提交！里面可能有数据库密码、AI 接口 Key）
+# 泄露密钥是重大安全事故，面试也会问到
+.env
+.env.local
+.env.*.local
+
+# 日志与系统文件：无用的临时文件
+*.log
+.DS_Store
+Thumbs.db
+
+# 编辑器：每个人用的编辑器不同，个人配置不该强加给团队
+# 注意下面 ! 开头是"例外"——extensions.json 要提交，用来推荐团队统一插件
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# 测试覆盖率报告：自动生成，不用提交
+coverage/
