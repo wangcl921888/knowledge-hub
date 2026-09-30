@@ -3,3 +3,10 @@
 packages:
   - "apps/*"      # apps 下的每个文件夹都是一个"应用"（能跑起来的网站，如 web、admin）
   - "packages/*"  # packages 下的每个文件夹都是一个"共享库"（被应用复用的代码，如 ui、db、ai）
+
+# pnpm 10 默认拦截依赖的安装脚本（postinstall 等，出于安全）。
+# 这里显式忽略以下依赖的构建脚本，避免安装被中断或反复提示。
+# （原本由 create-next-app 生成在 apps/web，现合并到根统一管理）
+ignoredBuiltDependencies:
+  - sharp
+  - unrs-resolver

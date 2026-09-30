@@ -1,0 +1,14 @@
+# 统一所有文本文件使用 LF 换行符，避免 Windows(CRLF) 与 macOS/Linux(LF) 混用导致 Prettier 报错
+* text=auto eol=lf
+
+# 显式声明二进制文件，防止被当作文本处理而损坏
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.pdf binary
